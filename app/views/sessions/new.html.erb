@@ -7,3 +7,14 @@
 
   <%= f.submit "login" %>
 <% end %>
+
+<div>
+<% unless @user.nil? %>
+  <%= @user.email %>
+  <%= @user.name %>
+
+
+  <%= link_to "sign out", method: :delete,
+    data: { confirm: "You sure?" } %>
+<% end %>
+</div>
