@@ -2,7 +2,7 @@
 
 class User < ApplicationRecord
   attr_accessor :remember_token
-  after_create :remember
+  before_create :remember
 
   validates :name, presence: true
   validates :email, presence: true
@@ -22,6 +22,7 @@ class User < ApplicationRecord
 
   def remember
     self.remember_token = User.create_token
-    update_attribute(:remember_digest, User.digest(remember_token))
+    self.remember_digest = User.digest(remember_token)
+    # CANNOT UPDATE ATTRIBUTE IN A BEFORE_CREATE
   end
 end
