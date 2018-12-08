@@ -1,5 +1,9 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
-  before_create :add_remember_digest
+  attr_accessor :remember_token
+  before_create { remember }
+
   validates :name, presence: true
   validates :email, presence: true
   ## Will not be fully validating w/ email regexp etc
@@ -13,6 +17,8 @@ class User < ApplicationRecord
   def self.digest(token)
     Digest::SHA1.hexdigest(token.to_s)
   end
+
+  private
 
   def remember
     self.remember_token = User.create_token
