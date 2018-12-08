@@ -2,7 +2,7 @@
 
 class User < ApplicationRecord
   attr_accessor :remember_token
-  before_create { remember }
+  after_create :remember
 
   validates :name, presence: true
   validates :email, presence: true
