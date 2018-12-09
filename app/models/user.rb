@@ -18,6 +18,8 @@ class User < ApplicationRecord
 
   has_secure_password # uses bcrypt
 
+  has_many :posts
+
   def self.create_token
     SecureRandom.urlsafe_base64
   end
