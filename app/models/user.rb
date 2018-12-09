@@ -4,8 +4,16 @@ class User < ApplicationRecord
   attr_accessor :remember_token
   before_create :remember
 
-  validates :name, presence: true
-  validates :email, presence: true
+  validates :name,
+            presence: true,
+            uniqueness: { case_sensitive: false },
+            length: { minimum: 4, maximum: 250 }
+
+  validates :email,
+            presence: true,
+            uniqueness: { case_sensitive: false },
+            length: { minimum: 4, maximum: 250 }
+
   ## Will not be fully validating w/ email regexp etc
 
   has_secure_password # uses bcrypt
