@@ -1,2 +1,7 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<% @posts.each do |post| %>
+  <div style="border:1px solid black; width:30%; text-align:center; padding: 5px; margin: 5px;">
+    <p>Title: <%= post.title %></p>
+    <p>Text: <%= post.text %></p>
+    <p><%= "Name: " + post.user.name if logged_in? %></p>
+  </div>
+<% end %>

@@ -8,9 +8,15 @@
       <%= link_to("Make a post!", new_post_path) %>
     <% end %>
   </p>
-<% elsif request.original_fullpath != "/login" %>
+<% elsif !(%w[/ /login].include?(request.original_fullpath)) %>
   <p>
     <%= link_to("Login", login_path) %>
+  </p>
+<% end %>
+
+<% if request.original_fullpath != "/posts" %>
+  <p>
+    <%= link_to "View all posts", posts_path %>
   </p>
 <% end %>
 
