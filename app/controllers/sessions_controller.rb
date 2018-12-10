@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    login
+    login if logged_in? == false
 
     if logged_in? == true
       flash[:notice] = 'Successful login'

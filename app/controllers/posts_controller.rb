@@ -18,6 +18,6 @@ class PostsController < ApplicationController
     return if logged_in?
 
     flash[:danger] = "Please login"
-    redirect_to(login)
+    redirect_to(login_url)
   end
 end

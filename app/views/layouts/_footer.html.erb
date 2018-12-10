@@ -2,6 +2,12 @@
   <p>
     <%= link_to("Logout", logout_path, method: :delete) %>
   </p>
+
+  <p>
+    <% unless request.original_fullpath == "/posts/new" %>
+      <%= link_to("Make a post!", new_post_path) %>
+    <% end %>
+  </p>
 <% elsif request.original_fullpath != "/login" %>
   <p>
     <%= link_to("Login", login_path) %>
